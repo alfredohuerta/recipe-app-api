@@ -28,5 +28,19 @@ class UserAdmin(BaseUserAdmin):
         (_('Important Dates'), {'fields': ('last_login',)})
     )
     readonly_fields = ['last_login']
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',), # Classes is some kind of equivalent to css in Django, so it permits to modify its presentation
+            'fields': (
+                'email',
+                'password1',
+                'password2',
+                'name',
+                'is_active',
+                'is_staff',
+                'is_superuser',
+            )
+        }),
+    )
 
 admin.site.register(models.User, UserAdmin) # register(uses default User model, adds the custom model to the data)
