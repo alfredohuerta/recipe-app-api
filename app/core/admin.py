@@ -30,7 +30,8 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            'classes': ('wide',), # Classes is some kind of equivalent to css in Django, so it permits to modify its presentation
+            # Classes is some kind of equivalent to css in Django
+            'classes': ('wide',),
             'fields': (
                 'email',
                 'password1',
@@ -43,4 +44,6 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 
-admin.site.register(models.User, UserAdmin) # register(uses default User model, adds the custom model to the data)
+
+# register(uses default User model, adds the custom model to the data)
+admin.site.register(models.User, UserAdmin)

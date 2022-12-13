@@ -4,6 +4,7 @@ Test for models
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+
 class ModelTests(TestCase):
     """Test models"""
 
@@ -12,8 +13,8 @@ class ModelTests(TestCase):
         email = 'test@example.com'
         password = 'testpass123'
         user = get_user_model().objects.create_user(
-            email = email,
-            password = password,
+            email=email,
+            password=password,
         )
 
         self.assertEqual(user.email, email)
@@ -27,13 +28,17 @@ class ModelTests(TestCase):
             ['TEST3@EXAMPLE.COM', 'TEST3@example.com'],
             ['test4@example.COM', 'test4@example.com'],
         ]
-        for email, expected in sample_emails: # sample_emails = [[email, expected], ...]
-            user = get_user_model().objects.create_user(email, 'sample123') # Create a new user using the email given by the tuple
-            self.assertEqual(user.email, expected) # assertEqual compares the expected values with the given values
+        # sample_emails = [[email, expected], ...]
+        for email, expected in sample_emails:
+            # Create a new user using the email given by the tuple
+            user = get_user_model().objects.create_user(email, 'sample123')
+            # assertEqual compares the expected values with the given values
+            self.assertEqual(user.email, expected)
 
     def test_new_user_without_email_raises_error(self):
         """Test that creating a user without an email raises a ValueError"""
-        with self.assertRaises(ValueError): # Raises a value error in case it doesn't receives a email.
+        # Raises a value error in case it doesn't receives a email.
+        with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
 
     def test_create_superuser(self):
