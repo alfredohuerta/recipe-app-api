@@ -15,7 +15,7 @@ class AdminSiteTest(TestCase):
         self.client = Client() # Creates an instance of the Django Client
         self.admin_user = get_user_model().objects.create_superuser(
             email = 'admin@example.com',
-            password = 'testpass123'
+            password = 'testpass123',
         )
         self.client.force_login(self.admin_user) # force the authentication for the user
         self.user = get_user_model().objects.create_user(
