@@ -47,3 +47,4 @@ class UserAdmin(BaseUserAdmin):
 
 # register(uses default User model, adds the custom model to the data)
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Recipe)
